@@ -1,32 +1,137 @@
 ---
-import "../assets/index.css";
+import { Image } from "astro:assets";
+
+// Importamos los logos individuales generados localmente
+import logoSkf from "../assets/brands/skf.png";
+import logoFag from "../assets/brands/fag.png";
+import logoGates from "../assets/brands/gates.png";
+import logoNsk from "../assets/brands/nsk.png";
+
+const brandLogos = [
+    { src: logoSkf, alt: "SKF" },
+    { src: logoFag, alt: "FAG" },
+    { src: logoGates, alt: "Gates" },
+    { src: logoNsk, alt: "NSK" },
+    // Agregaremos más a medida que se generen
+];
+
+// Duplicamos la lista para un loop infinito fluido
+const displayLogos = [
+    ...brandLogos,
+    ...brandLogos,
+    ...brandLogos,
+    ...brandLogos,
+];
 ---
 
-<section class="content-section brand-logos-section">
+<section class="content-section brand-logos-section" id="marcas">
     <div class="section-shell">
         <p class="section-kicker">Calidad garantizada</p>
         <h2>Marcas en inventario</h2>
-        
+
         <div class="brands-marquee-simple">
             <div class="marquee-track-simple">
-                <span class="brand-text">SKF</span>
-                <span class="brand-text">TIMKEN</span>
-                <span class="brand-text">NSK</span>
-                <span class="brand-text">LUK</span>
-                <span class="brand-text">FAG</span>
-                <span class="brand-text">NTN</span>
-                <span class="brand-text">KOYO</span>
-                <span class="brand-text">SNR</span>
-                <!-- Repeat for infinite effect -->
-                <span class="brand-text">SKF</span>
-                <span class="brand-text">TIMKEN</span>
-                <span class="brand-text">NSK</span>
-                <span class="brand-text">LUK</span>
-                <span class="brand-text">FAG</span>
-                <span class="brand-text">NTN</span>
-                <span class="brand-text">KOYO</span>
-                <span class="brand-text">SNR</span>
+                {
+                    displayLogos.map((brand) => (
+                        <div class="brand-item">
+                            <Image
+                                src={brand.src}
+                                alt={`Distribuidor oficial ${brand.alt}`}
+                                class="individual-brand-logo"
+                            />
+                        </div>
+                    ))
+                }
             </div>
         </div>
     </div>
 </section>
+
+<style>
+    .brand-logos-section {
+        background: #ffffff !important;
+        padding: var(--space-12) 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .brand-logos-section .section-kicker {
+        color: var(--color-brand-primary);
+        text-align: center;
+        margin-bottom: var(--space-2);
+    }
+
+    .brand-logos-section h2 {
+        color: var(--color-brand-primary);
+        text-align: center;
+        margin-bottom: var(--space-12);
+        font-size: clamp(1.5rem, 3vw, 2.2rem);
+    }
+
+    .brands-marquee-simple {
+        overflow: hidden;
+        width: 100%;
+        background: transparent;
+        padding: var(--space-4) 0;
+        display: flex;
+    }
+
+    .marquee-track-simple {
+        display: flex;
+        gap: 100px;
+        animation: marquee-infinite 30s linear infinite;
+        will-change: transform;
+        align-items: center;
+        width: max-content;
+    }
+
+    .marquee-track-simple:hover {
+        animation-play-state: paused;
+    }
+
+    .brand-item {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .individual-brand-logo {
+        height: 100px;
+        width: auto;
+        filter: grayscale(100%) opacity(0.5);
+        transition: all 0.4s var(--motion-easing-default);
+        object-fit: contain;
+    }
+
+    .brand-logos-section:hover .individual-brand-logo {
+        filter: grayscale(0%) opacity(0.8);
+    }
+
+    .brand-item:hover .individual-brand-logo {
+        filter: grayscale(0%) opacity(1) !important;
+        transform: scale(1.2);
+    }
+
+    @keyframes marquee-infinite {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            /* Movemos exactamente la mitad del track duplicado */
+            transform: translateX(-50%);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .individual-brand-logo {
+            height: 40px;
+        }
+        .marquee-track-simple {
+            gap: 60px;
+            animation-duration: 20s;
+        }
+    }
+</style>

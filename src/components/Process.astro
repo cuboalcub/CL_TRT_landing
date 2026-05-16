@@ -1,33 +1,54 @@
 ---
-import "../assets/index.css";
+
 ---
 
-<section class="content-section process-section">
+<section class="content-section process-section" id="proceso">
     <div class="section-shell">
         <p class="section-kicker">Tu socio experto</p>
         <h2>Cómo funciona TRT</h2>
-        
+
         <div class="process-flow-container">
             <div class="process-grid">
                 <article class="process-step" data-step="1">
                     <div class="step-visual">
                         <div class="step-icon-wrapper">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="step-icon">
-                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="step-icon"
+                            >
+                                <path
+                                    d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                                ></path>
                             </svg>
                         </div>
                         <span class="step-number-badge">01</span>
                     </div>
                     <div class="step-content">
                         <h3>Dinos qué necesitas</h3>
-                        <p>Comparte marca, medida o foto por WhatsApp. Recibimos listas completas.</p>
+                        <p>
+                            Comparte marca, medida o foto por WhatsApp.
+                            Recibimos listas completas.
+                        </p>
                     </div>
                 </article>
 
                 <article class="process-step" data-step="2">
                     <div class="step-visual">
                         <div class="step-icon-wrapper">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="step-icon">
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="step-icon"
+                            >
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <polyline points="12 6 12 12 16 14"></polyline>
                             </svg>
@@ -36,16 +57,26 @@ import "../assets/index.css";
                     </div>
                     <div class="step-content">
                         <h3>Cotización Express</h3>
-                        <p>Validamos existencia y opciones equivalentes en menos de 10 minutos.</p>
+                        <p>Validamos existencia y opciones equivalentes.</p>
                     </div>
                 </article>
 
                 <article class="process-step" data-step="3">
                     <div class="step-visual">
                         <div class="step-icon-wrapper">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="step-icon">
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="step-icon"
+                            >
                                 <rect x="1" y="3" width="15" height="13"></rect>
-                                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                                <polygon
+                                    points="16 8 20 8 23 11 23 16 16 16 16 8"
+                                ></polygon>
                                 <circle cx="5.5" cy="18.5" r="2.5"></circle>
                                 <circle cx="18.5" cy="18.5" r="2.5"></circle>
                             </svg>
@@ -54,10 +85,174 @@ import "../assets/index.css";
                     </div>
                     <div class="step-content">
                         <h3>Recoges o enviamos</h3>
-                        <p>Entrega inmediata local o envío nacional el mismo día a todo México.</p>
+                        <p>
+                            Entrega inmediata local o envío nacional el mismo
+                            día a todo México.
+                        </p>
                     </div>
                 </article>
             </div>
         </div>
     </div>
 </section>
+
+<style>
+    .process-section {
+        text-align: center;
+    }
+
+    .process-section .section-kicker {
+        color: var(--color-brand-accent);
+    }
+
+    .process-flow-container {
+        position: relative;
+        margin-top: var(--space-12);
+    }
+
+    /* Connecting Line (Desktop) - Segmented to avoid showing through icons */
+    .process-flow-container::after {
+        content: "";
+        position: absolute;
+        top: 36px;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+            to right,
+            transparent 0%,
+            transparent 20%,
+            rgba(234, 88, 12, 0.2) 20%,
+            rgba(234, 88, 12, 0.2) 45%,
+            transparent 45%,
+            transparent 55%,
+            rgba(234, 88, 12, 0.2) 55%,
+            rgba(234, 88, 12, 0.2) 80%,
+            transparent 80%,
+            transparent 100%
+        );
+        z-index: 1;
+    }
+
+    .process-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-8);
+        position: relative;
+        z-index: 2;
+    }
+
+    .process-step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+        padding: 0 !important;
+        transition: transform 0.4s var(--motion-easing-default);
+    }
+
+    .process-step:hover {
+        transform: translateY(-8px);
+    }
+
+    .step-visual {
+        position: relative;
+        margin-bottom: var(--space-6);
+    }
+
+    .step-icon-wrapper {
+        width: 72px;
+        height: 72px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-brand-accent);
+        transition: all 0.4s var(--motion-easing-default);
+        position: relative;
+    }
+
+    .process-step:hover .step-icon-wrapper {
+        background: var(--color-brand-accent);
+        color: white;
+        border-color: var(--color-brand-accent);
+        box-shadow: 0 0 30px rgba(234, 88, 12, 0.4);
+    }
+
+    .step-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .step-number-badge {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background: #ffffff;
+        color: var(--color-surface-dark);
+        font-size: 0.7rem;
+        font-weight: 900;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .step-content h3 {
+        font-family: var(--font-display);
+        font-size: 1.25rem;
+        color: #ffffff;
+        margin-bottom: 12px;
+        letter-spacing: -0.01em;
+    }
+
+    .step-content p {
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.6);
+        line-height: 1.6;
+        max-width: 24ch;
+        margin: 0 auto;
+    }
+
+    @media (max-width: 980px) {
+        .process-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .process-step {
+            flex-direction: row;
+            text-align: left;
+            align-items: flex-start;
+            gap: var(--space-4);
+        }
+
+        .step-visual {
+            margin-bottom: 0;
+            flex-shrink: 0;
+        }
+
+        .step-icon-wrapper {
+            width: 56px;
+            height: 56px;
+        }
+
+        .step-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .step-content p {
+            margin: 0;
+            max-width: 100%;
+        }
+    }
+</style>

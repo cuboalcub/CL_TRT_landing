@@ -1,8 +1,8 @@
 ---
-import "../assets/index.css";
+
 ---
 
-<section class="content-section audience-section" id="audiencia">
+<section class="content-section audience-section" id="industrias">
     <div class="section-shell">
         <p class="section-kicker">SOLUCIONES A TU MEDIDA</p>
         <h2>Atención especializada para cada necesidad</h2>
@@ -41,7 +41,7 @@ import "../assets/index.css";
                     recurrentes con cotización rápida.
                 </p>
                 <ul class="audience-benefits">
-                    <li>Cotización en &lt;10 min</li>
+                    <li>Cotización</li>
                     <li>Descuentos por volumen</li>
                     <li>Asesor dedicado</li>
                 </ul>
@@ -128,3 +128,227 @@ import "../assets/index.css";
         </div>
     </div>
 </section>
+
+<style>
+    /* Audience Section - Custom Background */
+    .audience-section {
+        background: #f5f4f1 !important;
+        border-top: none !important;
+        border-bottom: 1px solid #e5e7eb;
+        padding: var(--section-padding) 0;
+    }
+
+    .audience-section .section-kicker {
+        font-size: 0.75rem;
+        letter-spacing: 0.15em;
+        color: var(--color-accent-primary);
+        font-weight: 600;
+        margin-bottom: 16px;
+    }
+
+    .audience-section h2 {
+        color: var(--color-brand-primary) !important;
+        font-size: clamp(2rem, 4vw, 2.8rem);
+        font-weight: 700;
+        margin-bottom: 40px;
+        letter-spacing: -0.02em;
+        line-height: 1.15;
+    }
+
+    .audience-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(280px, 1fr));
+        gap: 32px;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .audience-card {
+        display: flex;
+        flex-direction: column;
+        border-radius: 14px;
+        padding: 32px;
+        transition:
+            transform 0.3s cubic-bezier(0.32, 0.72, 0, 1),
+            box-shadow 0.3s cubic-bezier(0.32, 0.72, 0, 1),
+            border-color 0.3s ease;
+        will-change: transform;
+        position: relative;
+        min-height: 100%;
+        cursor: pointer;
+    }
+
+    .audience-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            135deg,
+            rgba(29, 49, 129, 0.05),
+            rgba(234, 88, 12, 0.06)
+        );
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        border-radius: 16px;
+    }
+
+    .audience-card--business {
+        background: linear-gradient(165deg, #0f172a 0%, #1e293b 100%);
+        color: #f8fafc;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .audience-card--business:hover {
+        box-shadow: 0 18px 38px rgba(29, 49, 129, 0.3);
+        transform: translateY(-5px);
+    }
+
+    .audience-card--individual {
+        background: #ffffff;
+        color: var(--color-brand-primary);
+        border: 1px solid rgba(29, 49, 129, 0.22);
+        box-shadow: 0 12px 26px rgba(15, 23, 42, 0.1);
+    }
+
+    .audience-card--individual:hover {
+        border-color: var(--color-action-primary-default);
+        box-shadow: 0 16px 30px rgba(29, 49, 129, 0.12);
+        transform: translateY(-3px);
+    }
+
+    .audience-card h3 {
+        font-size: 1.15rem;
+        line-height: 1.3;
+        margin-bottom: 12px;
+        font-weight: 700;
+    }
+
+    .audience-card--business h3 {
+        color: #f0f0f0;
+    }
+
+    .audience-card--individual h3 {
+        color: var(--color-brand-primary);
+    }
+
+    .audience-card p {
+        margin-bottom: 16px;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .audience-card--business p {
+        color: #e8e8e8;
+    }
+
+    .audience-card--individual p {
+        color: var(--color-text-muted);
+    }
+
+    .audience-card-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+    }
+
+    .audience-icon {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .audience-card--business .audience-icon {
+        color: #ffd7bd;
+    }
+
+    .audience-card--individual .audience-icon {
+        color: var(--color-action-primary-default);
+    }
+
+    .audience-badge {
+        display: inline-block;
+        font-size: 0.65rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        padding: 6px 12px;
+        border-radius: 100px;
+        text-transform: uppercase;
+    }
+
+    .audience-card--business .audience-badge {
+        background: rgba(255, 255, 255, 0.16);
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.26);
+    }
+
+    .audience-card--individual .audience-badge {
+        background: rgba(29, 49, 129, 0.08);
+        color: #1d3181;
+        border: 1px solid rgba(29, 49, 129, 0.22);
+        font-weight: 900;
+    }
+
+    .audience-benefits {
+        list-style: none;
+        margin-bottom: 20px;
+        padding: 0;
+        flex-grow: 1;
+    }
+
+    .audience-benefits li {
+        font-size: 0.9rem;
+        padding-left: 22px;
+        margin-bottom: 8px;
+        position: relative;
+    }
+
+    .audience-card--business .audience-benefits li {
+        color: #e8e8e8;
+    }
+
+    .audience-card--individual .audience-benefits li {
+        color: var(--color-text-muted);
+    }
+
+    .audience-benefits li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 4px;
+        width: 14px;
+        height: 14px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+    }
+
+    .audience-card--business .audience-benefits li::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23ffd7bd' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='2.5,8.5 6,12 13.5,4'/%3E%3C/svg%3E");
+    }
+
+    .audience-card--individual .audience-benefits li::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23C2410C' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='2.5,8.5 6,12 13.5,4'/%3E%3C/svg%3E");
+    }
+
+    .audience-card-footer {
+        margin-top: auto;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .audience-card--individual .audience-card-footer {
+        border-top-color: rgba(29, 49, 129, 0.1);
+    }
+
+    @media (max-width: 980px) {
+        .audience-grid {
+            grid-template-columns: 1fr;
+            max-width: 100%;
+        }
+    }
+</style>

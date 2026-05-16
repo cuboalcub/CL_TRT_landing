@@ -1,5 +1,6 @@
 ---
-import "../assets/index.css";
+import trtLogo from "../assets/trt-logo.png";
+import { Image } from "astro:assets";
 ---
 
 <header class="global-header integrated">
@@ -7,25 +8,22 @@ import "../assets/index.css";
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo-area">
-                <div class="brand-name">
-                    <span class="brand-logo-text">TRT</span>
-                </div>
+                <a href="/" class="brand-name">
+                    <Image
+                        src={trtLogo}
+                        alt="TRT Logo"
+                        class="brand-logo-img"
+                    />
+                </a>
             </div>
 
             <div class="nav-links" id="primary-nav">
-                <a href="#sucursales">Sucursales</a>
+                <a href="#proceso">Proceso</a>
                 <a href="#catalogos">Catálogos</a>
-                <a href="#empresas">Empresas</a>
-                <a href="#particulares">Particulares</a>
-            </div>
-
-            <div class="nav-actions">
-                <a
-                    href="https://wa.me/5215500000000"
-                    class="btn--whatsapp btn--compact"
-                    aria-label="Cotizar por WhatsApp"
-                >
-                    <svg
+                <a href="#marcas">Marcas</a>
+                <a href="#sucursales">Sucursales</a>
+                <a href="#contacto"
+                    ><svg
                         class="btn__icon"
                         viewBox="0 0 24 24"
                         fill="currentColor"
@@ -33,9 +31,11 @@ import "../assets/index.css";
                         ><path
                             d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.966-.273-.099-.471-.148-.67.15-.198.297-.768.965-.94 1.164-.173.198-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.787-1.48-1.76-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.151-.173.2-.298.3-.497.099-.198.05-.371-.025-.52-.074-.148-.669-1.612-.916-2.207-.242-.58-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.793.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.148.198 2.095 3.2 5.077 4.487.71.306 1.263.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.414.248-.694.248-1.29.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.002-5.448 4.436-9.883 9.887-9.883 2.64 0 5.122 1.03 6.988 2.899 1.868 1.868 2.9 4.352 2.899 6.991-.003 5.45-4.437 9.885-9.89 9.885"
                         ></path></svg
-                    >
-                    Cotizar</a
+                    > Contacto</a
                 >
+            </div>
+
+            <div class="nav-actions">
                 <button
                     class="nav-toggle"
                     aria-label="Abrir menú"
@@ -53,8 +53,8 @@ import "../assets/index.css";
         <div class="mobile-nav" id="mobile-nav">
             <a href="#sucursales">Sucursales</a>
             <a href="#catalogos">Catálogos</a>
-            <a href="#empresas">Empresas</a>
-            <a href="#particulares">Particulares</a>
+            <a href="#industrias">Industrias</a>
+            <a href="#contacto">Contacto</a>
             <div class="mobile-coverage">
                 <span>CDMX activo</span>
                 <span>Veracruz activo</span>
@@ -79,3 +79,227 @@ import "../assets/index.css";
         </div>
     </nav>
 </header>
+
+<style>
+    /* --- Dual-Level Header --- */
+    .global-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 200;
+        background: #ffffff;
+        border-bottom: 1px solid rgba(29, 49, 129, 0.1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        transition: all 0.4s var(--motion-easing-default);
+    }
+
+    .global-header.integrated .nav-container {
+        pointer-events: auto; /* Restores clicks on the actual navbar content */
+    }
+
+    .global-header.scrolled {
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(12px);
+    }
+
+    .global-header.scrolled .brand-logo-text,
+    .global-header.scrolled .nav-links a {
+        color: var(--color-brand-primary) !important;
+        text-shadow: none;
+    }
+
+    /* Main Navbar */
+    .navbar {
+        min-height: 80px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .brand-logo-text,
+    .nav-links a {
+        color: var(--color-brand-primary) !important;
+        text-shadow: none;
+    }
+
+    .nav-links a:hover {
+        color: var(--color-brand-accent) !important;
+    }
+
+    .nav-container {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        height: 80px;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        padding: 0 var(--page-gutter);
+        column-gap: 24px;
+        background: transparent;
+        border: none;
+        transition: all 0.4s var(--motion-easing-default);
+    }
+
+    .brand-name {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .brand-logo-img {
+        height: 60px;
+        width: auto;
+        display: block;
+        transition: transform 0.3s ease;
+    }
+
+    .brand-name:hover .brand-logo-img {
+        transform: scale(1.05);
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 36px;
+    }
+
+    .nav-actions {
+        justify-self: end;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: var(--color-brand-primary) !important;
+        font-weight: 700;
+        font-size: 0.84rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        transition: all 0.3s;
+        position: relative;
+    }
+
+    .nav-links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+        width: 100%;
+        height: 2px;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.25s ease;
+        background: var(--color-brand-accent);
+    }
+
+    .nav-links a:hover {
+        color: white !important;
+    }
+
+    .nav-links a:hover::after {
+        transform: scaleX(1);
+    }
+
+    .nav-toggle {
+        display: none;
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+        border: 1px solid rgba(29, 49, 129, 0.2);
+        background: rgba(29, 49, 129, 0.05);
+        padding: 10px 8px;
+        cursor: pointer;
+    }
+
+    .nav-toggle span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        margin-bottom: 5px;
+        background: currentColor;
+    }
+
+    .nav-toggle span:last-child {
+        margin-bottom: 0;
+    }
+
+    .mobile-nav {
+        display: none;
+    }
+
+    @media (max-width: 980px) {
+        .nav-container {
+            grid-template-columns: 1fr auto;
+            height: 74px;
+        }
+
+        .nav-links,
+        .nav-actions .btn--whatsapp {
+            display: none;
+        }
+
+        .nav-toggle {
+            display: block;
+        }
+
+        .mobile-nav {
+            width: min(92%, 420px);
+            margin: 0 auto 12px;
+            display: none;
+            flex-direction: column;
+            gap: 12px;
+            padding: 24px;
+            border: 1px solid rgba(29, 49, 129, 0.1);
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-nav.is-open {
+            display: flex;
+        }
+
+        .mobile-nav a {
+            color: var(--color-brand-primary);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.86rem;
+            font-weight: 700;
+        }
+
+        .mobile-coverage {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 10px 0;
+        }
+
+        .mobile-coverage span {
+            font-size: 0.76rem;
+            color: var(--color-brand-primary);
+            background: rgba(29, 49, 129, 0.05);
+            padding: 6px 12px;
+            border-radius: 999px;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            font-weight: 700;
+            border: 1px solid rgba(29, 49, 129, 0.1);
+        }
+
+        .mobile-cta {
+            width: 100%;
+            justify-content: center;
+            display: inline-flex;
+        }
+    }
+</style>

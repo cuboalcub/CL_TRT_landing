@@ -1,32 +1,131 @@
 ---
-import "../assets/index.css";
+import { Image } from "astro:assets";
+import trtLogo from "../assets/trt-logo.png";
 ---
 
 <footer class="site-footer">
     <div class="section-shell footer-grid">
-        <div>
-            <h3>TRT</h3>
-            <p>Transmisiones y Rodamientos de Tlalnepantla</p>
-            <p>Lun-Vie 8:00 a 18:00 | Sáb 8:00 a 14:00</p>
+        <div class="footer-brand">
+            <Image src={trtLogo} alt="Logo TRT" class="footer-logo" />
+            <p class="brand-fullname">
+                Transmisiones y Rodamientos de Tlalnepantla
+            </p>
+            <p class="brand-schedule">
+                Lun-Vie 8:00 a 18:00 | Sáb 8:00 a 14:00
+            </p>
         </div>
-        <div>
+        <div class="footer-nav">
             <h4>Sedes</h4>
-            <p>CDMX (Activa)</p>
-            <p>Veracruz (Activa)</p>
-            <p>Hidalgo (Próximamente)</p>
+            <p>CDMX</p>
+            <p>Veracruz</p>
         </div>
-        <div>
+        <div class="footer-nav">
             <h4>Catálogos</h4>
-            <a href="#catalogo-rodamientos">Rodamientos</a>
-            <a href="#catalogo-bandas">Bandas</a>
-            <a href="#catalogo-cadenas">Cadenas</a>
+            <a href="#catalogos">Rodamientos</a>
+            <a href="#catalogos">Bandas</a>
+            <a href="#catalogos">Cadenas</a>
             <a href="#catalogos">Ver todos</a>
         </div>
-        <div>
+        <div class="footer-nav">
             <h4>Contacto</h4>
-            <a href="https://wa.me/5215500000000">WhatsApp</a>
-            <a href="mailto:ventas@trt.mx">ventas@trt.mx</a>
-            <a href="#">Aviso de privacidad</a>
+            <a href="https://wa.me/5215500000000" class="footer-contact-link"
+                >WhatsApp</a
+            >
+            <a href="mailto:trt.ventas1@gmail.com" class="footer-contact-link"
+                >Correo CDMX</a
+            >
+
+            <a href="mailto:trt.ventas6@gmail.com" class="footer-contact-link"
+                >Correo Veracruz</a
+            >
+
+            <a href="#" class="footer-legal">Aviso de privacidad</a>
         </div>
     </div>
 </footer>
+
+<style>
+    /* --- 2.10 Footer --- */
+    .site-footer {
+        background-color: var(--color-surface-dark);
+        color: var(--color-text-muted);
+        padding: var(--space-16) 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: var(--space-12);
+    }
+
+    .footer-logo {
+        color: #ffffff;
+        font-size: 1.5rem;
+        font-weight: 900;
+        margin-bottom: var(--space-4);
+        letter-spacing: -0.02em;
+    }
+
+    .brand-fullname {
+        font-size: 0.9rem;
+        color: var(--color-text-light);
+        margin-bottom: var(--space-2);
+    }
+
+    .brand-schedule {
+        font-size: 0.8rem;
+        color: var(--color-text-muted);
+    }
+
+    .footer-nav h4 {
+        color: #ffffff;
+        font-size: 0.75rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: var(--space-6);
+    }
+
+    .footer-nav a,
+    .footer-nav p {
+        display: block;
+        color: var(--color-text-muted);
+        text-decoration: none;
+        font-size: 0.9rem;
+        margin-bottom: var(--space-3);
+        transition: color 0.2s ease;
+    }
+
+    .footer-nav a:hover {
+        color: var(--color-brand-accent);
+    }
+
+    .footer-contact-link {
+        font-weight: 700;
+    }
+
+    .footer-legal {
+        font-size: 0.75rem !important;
+        opacity: 0.6;
+        margin-top: var(--space-8);
+    }
+
+    @media (max-width: 980px) {
+        .footer-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-8);
+        }
+    }
+
+    @media (max-width: 640px) {
+        .footer-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .footer-logo {
+        width: 6rem;
+        height: auto;
+    }
+</style>

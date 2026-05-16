@@ -1,5 +1,5 @@
 ---
-import "../assets/index.css";
+
 ---
 
 <section class="hero-section cinematic-full">
@@ -29,14 +29,12 @@ import "../assets/index.css";
 
                 <p class="hero-subheadline-cinematic">
                     Disponibilidad en CDMX y Veracruz para talleres, flotillas y
-                    particulares. Cotizamos cualquier pieza en <strong
-                        >menos de 10 minutos.</strong
-                    >
+                    particulares. Cotizamos cualquier pieza en <strong></strong>
                 </p>
 
                 <div class="hero-actions-cinematic">
                     <a
-                        href="https://wa.me/5215500000000"
+                        href="#contacto"
                         class="btn--whatsapp"
                         aria-label="Cotizar por WhatsApp"
                     >
@@ -59,3 +57,158 @@ import "../assets/index.css";
         </div>
     </div>
 </section>
+
+<style>
+    /* --- 2.1 Hero Section (Cinematic Full-Bleed) --- */
+    .hero-section.cinematic-full {
+        min-height: 100vh;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        padding-top: 96px;
+        padding-bottom: 84px;
+        box-sizing: border-box;
+        background-color: var(--color-surface-dark);
+    }
+
+    .hero-visual-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    .bg-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: saturate(0.8) brightness(0.9);
+    }
+
+    .bg-scrim {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            105deg,
+            rgba(0, 0, 0, 0.65) 0%,
+            rgba(0, 0, 0, 0.35) 50%,
+            rgba(0, 0, 0, 0.1) 100%
+        );
+    }
+
+    .hero-blueprint-grid {
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0.03) 1px,
+                transparent 1px
+            );
+        background-size: 40px 40px;
+        z-index: 2;
+        mask-image: radial-gradient(circle at 20% 50%, black, transparent 80%);
+        pointer-events: none;
+    }
+
+    .hero-container-full {
+        width: 100%;
+        padding: 0 var(--page-gutter);
+        position: relative;
+        z-index: 10;
+    }
+
+    .hero-content-left {
+        max-width: 760px;
+        position: relative;
+        padding: var(--space-6) 0;
+    }
+
+    .hero-brand-tag {
+        display: flex;
+        align-items: center;
+        gap: var(--space-4);
+        margin-bottom: var(--space-4);
+    }
+
+    .hero-stats-badge {
+        background: var(
+            --color-action-primary
+        ); /* Fondo azul sólido para alto contraste */
+        color: white;
+        font-size: 0.75rem; /* font-xs */
+        font-weight: 800;
+        padding: 6px 12px;
+        border-radius: 100px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border: none;
+        box-shadow: 0 3px 12px rgba(8, 12, 24, 0.28);
+    }
+
+    .hero-headline-cinematic {
+        font-size: clamp(2.2rem, 4.4vw, 4rem);
+        font-weight: 900;
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+        color: rgba(255, 255, 255, 0.94);
+        margin-bottom: var(--space-4);
+        text-transform: none;
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .text-accent {
+        color: #ffffff;
+        text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+    }
+
+    .hero-subheadline-cinematic {
+        font-size: 1.06rem;
+        color: rgba(255, 255, 255, 0.9);
+        max-width: 58ch;
+        line-height: 1.55;
+        margin-bottom: var(--space-6);
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+    }
+
+    .hero-actions-cinematic {
+        display: flex;
+        gap: var(--space-6);
+        margin-top: var(--space-6);
+    }
+
+    @media (max-width: 768px) {
+        .bg-scrim {
+            background: linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.9) 18%,
+                rgba(0, 0, 0, 0.53) 100%
+            );
+        }
+        .hero-container-full {
+            padding: 0 var(--page-gutter);
+        }
+        .hero-headline-cinematic {
+            font-size: clamp(2rem, 10vw, 3rem);
+        }
+        .hero-subheadline-cinematic {
+            font-size: 1rem;
+        }
+        .hero-brand-tag {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        .hero-actions-cinematic {
+            flex-direction: column;
+            gap: 16px;
+        }
+    }
+</style>

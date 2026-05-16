@@ -1,5 +1,4 @@
 ---
-import "../assets/index.css";
 ---
 
 <section class="content-section testimonial-section">
@@ -66,3 +65,119 @@ import "../assets/index.css";
         </div>
     </div>
 </section>
+
+<style>
+/* Testimonial Section (Light Theme & Carousel) */
+.testimonial-section {
+    background: #f5f4f1 !important;
+    border-top: none !important;
+    border-bottom: 1px solid #e5e7eb;
+    padding: var(--section-padding) 0;
+    overflow: hidden;
+}
+
+.testimonial-section .section-kicker {
+    color: var(--color-accent-primary);
+}
+
+.testimonial-section h2 {
+    color: var(--color-brand-primary);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    margin-bottom: 40px;
+    letter-spacing: -0.02em;
+}
+
+.testimonial-carousel {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    padding-bottom: 32px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.testimonial-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.testimonial-card-outer {
+    flex: 0 0 85%;
+    max-width: 400px;
+    scroll-snap-align: center;
+}
+
+@media (min-width: 768px) {
+    .testimonial-card-outer {
+        flex: 0 0 calc(50% - 12px);
+        scroll-snap-align: start;
+    }
+}
+
+@media (min-width: 1024px) {
+    .testimonial-card-outer {
+        flex: 0 0 calc(33.333% - 16px);
+    }
+}
+
+.testimonial-card-inner {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+}
+
+.testimonial-quote-icon {
+    color: var(--color-accent-primary);
+    margin-bottom: 20px;
+    opacity: 0.3;
+}
+
+.testimonial-card-inner p {
+    font-size: 1.1rem;
+    color: #334155;
+    line-height: 1.6;
+    margin-bottom: 32px;
+    font-weight: 500;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: auto;
+}
+
+.testimonial-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(29, 49, 129, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-brand-primary);
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+}
+
+.testimonial-author-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonial-author-info span {
+    color: var(--color-brand-primary);
+    font-weight: 800;
+    font-size: 1rem;
+    line-height: 1.2;
+}
+
+.testimonial-author-info small {
+    color: #64748b;
+    font-size: 0.85rem;
+    margin-top: 4px;
+}
+</style>
